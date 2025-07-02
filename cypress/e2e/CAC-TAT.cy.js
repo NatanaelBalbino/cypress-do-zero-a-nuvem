@@ -2,6 +2,7 @@ const { faker } = require('@faker-js/faker');
 
 describe('Central de Atendimento ao Cliente TAT', () => {
   const userData = {}
+
   beforeEach(() => {
     cy.visit('../../src/index.html')
 
@@ -37,7 +38,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .type(userData.textArea)
 
     cy
-    .get('button[type="submit"]')
+    .contains('button', 'Enviar')
     .click()
 
     cy
@@ -63,7 +64,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .type(userData.textArea)
 
     cy
-    .get('button[type="submit"]')
+    .contains('button', 'Enviar')
     .click()
 
     cy
@@ -99,7 +100,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     .type(userData.textArea)
 
     cy
-    .get('button[type="submit"]')
+    .contains('button', 'Enviar')
     .click()
 
     cy
@@ -137,7 +138,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
     cy
-    .get('button[type="submit"]')
+    .contains('button', 'Enviar')
     .click()
 
     cy.get('.error')
