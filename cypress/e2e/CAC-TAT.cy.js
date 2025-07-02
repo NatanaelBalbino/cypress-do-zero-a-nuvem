@@ -1,6 +1,14 @@
+const { faker } = require('@faker-js/faker');
+
 describe('Central de Atendimento ao Cliente TAT', () => {
+  const userData = {}
   beforeEach(() => {
-    cy.visit('../../src/index.html')  
+    cy.visit('../../src/index.html')
+
+    userData.firstName = faker.person.firstName()
+    userData.lastName  = faker.person.lastName()
+    userData.email     = faker.internet.email()
+    userData.textArea  = 'Teste de comando customizado Cypress'
   });
 
   it('verifica o título da aplicação', () => {
@@ -8,32 +16,25 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy
     .title()
     .should('eq', 'Central de Atendimento ao Cliente TAT')
-    
-    cy
-    .get('#firstName')
-    .type('{enter} ')
-
-    cy
-    .get('input[value="elogio"]')
-    .type('Elogio')
+  
   })
   it('preenche os campos obrigatórios e envia o formulário', () => {
 
     cy
     .get('#firstName')
-    .type('Natanael')
+    .type(userData.firstName)
 
     cy
     .get('#lastName')
-    .type('Balbino')
+    .type(userData.lastName)
 
     cy
     .get('#email')
-    .type('natanael@gmail.com')
+    .type(userData.email)
 
     cy
     .get('#open-text-area')
-    .type('Mensagem de teste')
+    .type(userData.textArea)
 
     cy
     .get('button[type="submit"]')
@@ -47,11 +48,11 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
     cy
     .get('#firstName')
-    .type('Natanael')
+    .type(userData.firstName)
 
     cy
     .get('#lastName')
-    .type('Balbino')
+    .type(userData.lastName)
 
     cy
     .get('#email')
@@ -59,7 +60,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
     cy
     .get('#open-text-area')
-    .type('Mensagem de teste')
+    .type(userData.textArea)
 
     cy
     .get('button[type="submit"]')
@@ -79,23 +80,23 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
     cy
     .get('#phone-checkbox')
-    .click()
+    .check()
 
     cy
     .get('#firstName')
-    .type('Natanael')
+    .type(userData.firstName)
 
     cy
     .get('#lastName')
-    .type('Balbino')
+    .type(userData.lastName)
 
     cy
     .get('#email')
-    .type('natanael@gmail.com')
+    .type(userData.email)
 
     cy
     .get('#open-text-area')
-    .type('Mensagem de teste')
+    .type(userData.textArea)
 
     cy
     .get('button[type="submit"]')
@@ -108,22 +109,22 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
     cy
     .get('#firstName')
-    .type('Natanael')
-    .should('have.value', 'Natanael')
+    .type(userData.firstName)
+    .should('have.value', userData.firstName)
     .clear()
     .should('have.value', '')
 
     cy
     .get('#lastName')
-    .type('Balbino')
-    .should('have.value', 'Balbino')
+    .type(userData.lastName)
+    .should('have.value', userData.lastName)
     .clear()
     .should('have.value', '')
 
     cy
     .get('#email')
-    .type('natanael.balbino@gmail.com')
-    .should('have.value', 'natanael.balbino@gmail.com')
+    .type(userData.email)
+    .should('have.value', userData.email)
     .clear()
     .should('have.value', '')
 
@@ -141,5 +142,11 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
     cy.get('.error')
     .should('be.visible')
+  })
+  it('envia o formuário com sucesso usando um comando customizado que não recebe argumento', () =>{
+    cy.fillMandatoryFieldsAndSubmitNoArgs()
+  })
+  it('envia o formuário com sucesso usando um comando customizado que recebe um objeto', () =>{
+    cy.fillMandatoryFieldsAndSubmitWithObj(userData)
   })
 })
