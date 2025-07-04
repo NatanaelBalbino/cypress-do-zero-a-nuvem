@@ -15,23 +15,23 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('verifica o título da aplicação', () => {
     
     cy.title()
-    .should('eq', 'Central de Atendimento ao Cliente TAT')
+      .should('eq', 'Central de Atendimento ao Cliente TAT')
   
   })
   
   it('preenche os campos obrigatórios e envia o formulário', () => {
     
     cy.get('#firstName')
-    .type(userData.firstName)
+      .type(userData.firstName)
 
     cy.get('#lastName')
-    .type(userData.lastName)
+      .type(userData.lastName)
 
     cy.get('#email')
-    .type(userData.email)
+      .type(userData.email)
 
     cy.get('#open-text-area')
-    .type(userData.textArea, { 'delay': 0 })
+      .type(userData.textArea, { 'delay': 0 })
 
     cy.contains('button', 'Enviar').click()
 
@@ -41,16 +41,16 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
 
     cy.get('#firstName')
-    .type(userData.firstName)
+      .type(userData.firstName)
 
     cy.get('#lastName')
-    .type(userData.lastName)
+      .type(userData.lastName)
 
     cy.get('#email')
-    .type('natanael@gmail,com')
+      .type('natanael@gmail,com')
 
     cy.get('#open-text-area')
-    .type(userData.textArea, { 'delay': 0 })
+      .type(userData.textArea, { 'delay': 0 })
 
     cy.contains('button', 'Enviar').click()
 
@@ -60,25 +60,25 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('campo telefone continua vazio quando preenchido com valor não numérico', () => {
 
     cy.get('#phone')
-    .type('abcdefghij')
-    .should('have.value', '')
+      .type('abcdefghij')
+      .should('have.value', '')
   })
   
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
     cy.get('#phone-checkbox')
-    .check()
+      .check()
 
     cy.get('#firstName')
-    .type(userData.firstName)
+      .type(userData.firstName)
 
     cy.get('#lastName')
-    .type(userData.lastName)
+      .type(userData.lastName)
 
     cy.get('#email')
-    .type(userData.email)
+      .type(userData.email)
 
     cy.get('#open-text-area')
-    .type(userData.textArea, { 'delay': 0 })
+      .type(userData.textArea, { 'delay': 0 })
 
     cy.contains('button', 'Enviar').click()
 
@@ -87,28 +87,28 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   
   it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
     cy.get('#firstName')
-    .type(userData.firstName)
-    .should('have.value', userData.firstName)
-    .clear()
-    .should('have.value', '')
+      .type(userData.firstName)
+      .should('have.value', userData.firstName)
+      .clear()
+      .should('have.value', '')
 
     cy.get('#lastName')
-    .type(userData.lastName)
-    .should('have.value', userData.lastName)
-    .clear()
-    .should('have.value', '')
+      .type(userData.lastName)
+      .should('have.value', userData.lastName)
+      .clear()
+      .should('have.value', '')
 
     cy.get('#email')
-    .type(userData.email)
-    .should('have.value', userData.email)
-    .clear()
-    .should('have.value', '')
+      .type(userData.email)
+      .should('have.value', userData.email)
+      .clear()
+      .should('have.value', '')
 
     cy.get('#phone')
-    .type('11993999293')
-    .should('have.value', '11993999293')
-    .clear()
-    .should('have.value', '')
+      .type('11993999293')
+      .should('have.value', '11993999293')
+      .clear()
+      .should('have.value', '')
   })
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
     cy.contains('button', 'Enviar').click()
@@ -126,5 +126,23 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   it('envia o formuário com sucesso usando um comando customizado que recebe valor default', () =>{
     cy.fillMandatoryFieldsAndSubmitDefaultData()
+  })
+
+  it('eleciona um produto (YouTube) por seu texto', () => {
+    cy.get('#product')
+      .select('YouTube')
+      .should('have.value', 'youtube')
+  })
+
+  it('seleciona um produto (Mentoria) por seu valor (value)', () => {
+    cy.get('#product')
+      .select('mentoria')
+      .should('have.value', 'mentoria')
+  })
+
+  it('seleciona um produto (Blog) por seu índice', () => {
+    cy.get('#product')
+      .select(1)
+      .should('have.value', 'blog')
   })
 })
