@@ -128,7 +128,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.fillMandatoryFieldsAndSubmitDefaultData()
   })
 
-  it('eleciona um produto (YouTube) por seu texto', () => {
+  it('seleciona um produto (YouTube) por seu texto', () => {
     cy.get('#product')
       .select('YouTube')
       .should('have.value', 'youtube')
@@ -152,12 +152,35 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('be.checked')
   })
 
-  it.only('marca cada tipo de atendimento', () => {
+  it('marca cada tipo de atendimento', () => {
     cy.get('input[type="radio"]')
       .each(eachRadio => {
         cy.wrap(eachRadio)
           .check()
           .should('be.checked')
       })
+  })
+
+  it('marca ambos checkboxes, depois desmarca o último', () => {
+    // O teste deve possuir verificações de que ambos checkboxes foram marcados,
+    // Aqui o .get informou onde estão todos os checks e com o .check foram checados
+    cy.get('#check input[type="checkbox"]') // ambos checks marcados 
+      .as('checkboxes')
+      .check()
+
+    //Aqui estamos validando se os checks encontrados e depositados na tag @checkboxes estão true checkds
+    // INTERESSANTE: Em um sistema personalizavel com grande números de checks ativaveis usar uma TAG para saber 
+                  // quais devem estar ativos e quais não é bem interessante e deterministico. Precisaria analisar a performance
+                  // deste teste 
+    cy.get('@checkboxes')
+      .each(checkbox => {
+        expect(checkbox[0].checked).to.equal(true)
+      })
+
+    // e depois, que o último (.last()) foi desmarcado
+    cy.get('@checkboxes')
+      .last()
+      .uncheck()
+      .should('be.not.checked')
   })
 })
