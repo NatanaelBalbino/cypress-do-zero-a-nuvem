@@ -189,7 +189,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json')
       .then(input => {
-        console.log(input)
         expect(input[0].files[0].name).to.equal('example.json')
       })
 
@@ -212,7 +211,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('input[type="file"]')
       .selectFile('@ExampleFile')
       .then(input => {
-        console.log(input)
         expect(input[0].files[0].name).to.equal('example.json')
       })
   })
