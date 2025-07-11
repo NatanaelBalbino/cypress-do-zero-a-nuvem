@@ -214,4 +214,23 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         expect(input[0].files[0].name).to.equal('example.json')
       })
   })
+
+  it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+    // Confiar que o Broser está funcionando não quer dizer que não tenho que validar se o link existe
+    
+    cy.get('#privacy > a') // Mesmo vendo na aula ele mostrando o uso do .contains() preferi seguir com o .get
+      .should('have.attr', 'href', 'privacy.html') //Adicionado após assistir a aula na Udemy
+      .and('have.attr', 'target', '_blank') // Adicionado após assistir a aula o .and no lugar do .should evitando repetição
+    
+  })
+
+  it('acessa a página da política de privacidade removendo o target e então clicando no link', () => {
+    cy.get('#privacy > a')
+      .invoke('removeAttr', 'target')
+      .click()
+    // Adicionado após assistir a aula: LEMBRESSE sempre dos 3A (Arrange, Act, Assert) na automação assim como no teste manual temos o pilar "validação de que o resultado funcionou conforme o esperado"
+    cy.get('#title')
+      .should('have.text', 'CAC TAT - Política de Privacidade')
+  })
+
 })
