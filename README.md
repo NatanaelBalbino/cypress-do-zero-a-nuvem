@@ -1,5 +1,5 @@
 # cypress-do-zero-a-nuvem
-Esse projeto foi desenvolvido durante meus estudos do Curso Cypress, Do Zero a Nuvem da Escola TAT pela Udemy. O Projeto é a automação dos testes da Central de Atendimento TAT onde estão sendo validados todos os campos da aplicação e analisando se as funcionalidade esperadas não estão com defeito.
+Esse projeto foi desenvolvido durante meus estudos do Curso Cypress, Do Zero a Nuvem da Escola TAT pela Udemy. O Projeto é a automação dos testes da Central de Atendimento TAT onde estamos validando todos os campos da aplicação e analisando se as funcionalidade esperadas não estão com defeito.
 
 ## Guia de Execução da Automação
 
