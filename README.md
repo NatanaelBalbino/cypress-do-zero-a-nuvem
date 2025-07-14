@@ -1,28 +1,56 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# cypress-do-zero-a-nuvem
+## Guia de Execução da Automação
 
-👋 Seja bem-vindo(a)!
+[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+### Pré-requisitos
+Certifique-se de que os seguintes softwares estão instalados na sua máquina:
+- [Node.js](https://nodejs.org/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Git Bash](https://git-scm.com/downloads) 
 
-## O que você vai aprender?
+## Clonando o Repositório
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+1. Abra o **Visual Studio Code**.
+2. Vá para **Terminal > New Terminal**.
+3. Selecione o terminal **bash**.
+4. No prompt, insira o comando abaixo para clonar o repositório:
+```sh
+git clone https://github.com/NatanaelBalbino/cypress-do-zero-a-nuvem.git
+```
+5. Navegue até a pasta raiz do projeto:
+```sh
+cd cypress-do-zero-a-nuvem
 
-## Vamos começar?
+```
+6. Instale as dependências do projeto:
+```sh
+npm install
+```
+Aguarde a conclusão da instalação.
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+## Executando os Testes pelo GUI
 
-___
+Para abrir a interface gráfica do Cypress e rodar os testes:
+```sh
+npx cypress open
+```
 
-Este é um curso da **Escola Talking About Testing**.
+Para abrir a interface gráfica do Cypress e rodar os testes com um _viewport_ mobile (410x860px):
+```sh
+npm open cy:mobile
+```
+
+## Executando os Testes via console (headless)
+
+Para executar os testes diretamente no console:
+```sh
+npm run test
+```
+
+Para executar os testes com um _viewport_ mobile (410x860px):
+```sh
+npm run test:mobile
+```
+
+✨O SUT (Software Under Test) já está definida no projeto, portanto, não é necessário realizar qualquer alteração.✨
