@@ -1,4 +1,6 @@
 # cypress-do-zero-a-nuvem
+Esse projeto foi desenvolvido durante meus estudos do Curso Cypress, Do Zero a Nuvem da Escola TAT pela Udemy. O Projeto é a automação dos testes da Central de Atendimento TAT onde estão sendo validados todos os campos da aplicação e analisando se as funcionalidade esperadas não estão com defeito.
+
 ## Guia de Execução da Automação
 
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
@@ -21,7 +23,6 @@ git clone https://github.com/NatanaelBalbino/cypress-do-zero-a-nuvem.git
 5. Navegue até a pasta raiz do projeto:
 ```sh
 cd cypress-do-zero-a-nuvem
-
 ```
 6. Instale as dependências do projeto:
 ```sh
