@@ -1,4 +1,4 @@
-name: End-to-end tests
+name: End-to-end tests (mobile)
 on: push
 jobs:
   cypress-run:
@@ -6,5 +6,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cypress run
+      - name: Cypress run --config viewportWidth=410 viewportHeight=860
         uses: cypress-io/github-action@v6
