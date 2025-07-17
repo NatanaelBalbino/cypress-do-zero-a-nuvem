@@ -6,9 +6,9 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:mobile": "cypress open --config viewportWidth=410 viewportHeight=860",
-    "test": "cypress run --record --key $CYPRESS_RECORD_KEY",
-    "test:mobile": "cypress run --config viewportWidth=410 viewportHeight=860 --record --key $CYPRESS_RECORD_KEY ",
-    "test:cloud" : "cypress run --record --key $CYPRESS_RECORD_KEY"
+    "test": "cypress run",
+    "test:mobile": "cypress run",
+    "test:cloud": "cypress run --record --key $CYPRESS_RECORD_KEY"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://github.com/wlsf82/cypress-do-zero-a-nuvem#readme",
   "devDependencies": {
-    "cypress": "^13.12.0"
+    "cypress": "^14.5.2"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0"
